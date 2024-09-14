@@ -97,6 +97,7 @@ async def _mirror_leech(client, message, isQbit=False, isLeech=False, sameDir=No
     reply_to      = None
     file_         = None
     session       = ''
+    count         = 0
     
     if not isinstance(seed, bool):
         dargs = seed.split(':')
