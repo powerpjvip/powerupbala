@@ -440,8 +440,8 @@ class MirrorLeechListener:
     async def onUploadComplete(self, link, size, files, folders, mime_type, name, rclonePath='', private=False):
         if self.isSuperGroup and config_dict['INCOMPLETE_TASK_NOTIFIER'] and DATABASE_URL:
             await DbManger().rm_complete_task(self.message.link)
-        global count
-        count -= 1
+        #global count
+        #count -= 1
         name, _ = await format_filename(name, self.user_id, isMirror=not self.isLeech)
         msg = BotTheme('NAME', Name="Task has been Completed!"if config_dict['SAFE_MODE'] and self.isSuperGroup else escape(name))
         msg += BotTheme('SIZE', Size=get_readable_file_size(size))
