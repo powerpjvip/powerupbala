@@ -148,7 +148,7 @@ async def _mirror_leech(client, message, isQbit=False, isLeech=False, sameDir=No
     async def __run_multi():
         if multi <= 1:
             return
-        await sleep(5)
+        await sleep(50)
         if len(bulk) != 0:
             msg = input_list[:1]
             msg.append(f'{bulk[0]} -i {multi - 1}')
