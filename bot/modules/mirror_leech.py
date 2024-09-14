@@ -34,7 +34,7 @@ from bot.modules.gen_pyro_sess import get_decrypt_key
 from bot.helper.nordbotz_utils.react_nordbotz import send_react
 @new_task
 async def _mirror_leech(client, message, isQbit=False, isLeech=False, sameDir=None, bulk=[]):
-    sticker_message = await message.reply_sticker("CAACAgUAAxkBAAEtGvVmubOKcXBCOqf3scvXaZDqF9TzJAACAQADwSQxMUzllWoqwNZvNQQ")
+    sticker_message = await message.reply_sticker("🥰")
     await asyncio.sleep(1)
     await sticker_message.delete()
     await send_react(message)
