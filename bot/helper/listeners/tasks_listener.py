@@ -629,7 +629,7 @@ class MirrorLeechListener:
         await start_from_queued()
         await delete_links(self.message)
         sticker_message = await self.message.reply_sticker("CAACAgIAAxkBAAEtG11mucTu1yOejNJ0jy7-GOx9we_s7AAC5w0AAkwAAalLKPSbhF1cTYk1BA")
-        await asyncio.sleep(99)
+        await asyncio.sleep(5)
         await sticker_message.delete()
 
     async def onDownloadError(self, error, button=None):
@@ -673,7 +673,7 @@ class MirrorLeechListener:
         if self.newDir:
             await clean_download(self.newDir)
         sticker_message = await self.message.reply_sticker("CAACAgIAAxkBAAEtHV5mui-c8pAUnNQ4tcEPiR_iau7XdwACKA0AAiDCyEgVplZsx9KxyDUE")
-        await asyncio.sleep(99)
+        await asyncio.sleep(5)
         await sticker_message.delete()
 
     async def onUploadError(self, error):
@@ -714,5 +714,5 @@ class MirrorLeechListener:
         if self.newDir:
             await clean_download(self.newDir)
         sticker_message = await self.message.reply_sticker("CAACAgIAAxkBAAEtHV5mui-c8pAUnNQ4tcEPiR_iau7XdwACKA0AAiDCyEgVplZsx9KxyDUE")
-        await asyncio.sleep(99)
+        await asyncio.sleep(5)
         await sticker_message.delete()
