@@ -253,7 +253,8 @@ async def format_filename(file_, user_id, dirpath=None, isMirror=False):
         
     prefile_ = file_
     file_ = re_sub(r'www\S+', '', file_)
-    global count   
+    global count
+    count += 1
     if remname:
         if not remname.startswith('|'):
             remname = f"|{remname}"
