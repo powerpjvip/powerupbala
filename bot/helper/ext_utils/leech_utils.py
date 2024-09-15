@@ -18,7 +18,7 @@ from bot.helper.ext_utils.bot_utils import cmd_exec, sync_to_async, get_readable
 from bot.helper.nordbotz_utils.metadata import ARCH_EXT, get_mime_type, edit_metadata
 from bot.helper.ext_utils.telegraph_helper import telegraph
 
-count = 1344
+count = 0
 
 
 async def is_multi_streams(path):
