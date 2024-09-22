@@ -312,7 +312,7 @@ async def format_filename(file_, user_id, dirpath=None, isMirror=False):
         cap_mono = slit[0].format(
             filename = nfile_,
             size = get_readable_file_size(await aiopath.getsize(up_path)),
-            count = str(count).zfill(3),
+            count = str(count).zfill(4),
             duration = get_readable_time(dur),
             quality = qual,
             languages = lang,
