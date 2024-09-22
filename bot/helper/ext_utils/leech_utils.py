@@ -277,7 +277,7 @@ async def format_filename(file_, user_id, dirpath=None, isMirror=False):
         nfile_ = prefix.replace('\s', ' ') + file_
         prefix = re_sub(r'<.*?>', '', prefix).replace('\s', ' ')
         if not file_.startswith(prefix):
-            file_ = f"{str(count).zfill(3)}.{prefix}{file_}"
+            file_ = f"{str(count).zfill(4)}.{prefix}{file_}"
 
     if suffix and not isMirror:
         suffix = suffix.replace('\s', ' ')
@@ -286,7 +286,7 @@ async def format_filename(file_, user_id, dirpath=None, isMirror=False):
         _extIn = 1 + len(fileDict[-1])
         _extOutName = '.'.join(
             fileDict[:-1]).replace('.', ' ').replace('-', ' ')
-        _newExtFileName = f"{str(count).zfill(3)}.{_extOutName}{suffix}.{fileDict[-1]}"
+        _newExtFileName = f"{str(count).zfill(4)}.{_extOutName}{suffix}.{fileDict[-1]}"
         if len(_extOutName) > (64 - (sufLen + _extIn)):
             _newExtFileName = (
                 _extOutName[: 64 - (sufLen + _extIn)]
@@ -295,7 +295,7 @@ async def format_filename(file_, user_id, dirpath=None, isMirror=False):
         file_ = _newExtFileName
     elif suffix:
         suffix = suffix.replace('\s', ' ')
-        file_ = f"{ospath.splitext(file_)[0]}{suffix}{ospath.splitext(file_)[1]}" if '.' in file_ else f"{str(count).zfill(3)}.{file_}{suffix}"
+        file_ = f"{ospath.splitext(file_)[0]}{suffix}{ospath.splitext(file_)[1]}" if '.' in file_ else f"{str(count).zfill(4)}.{file_}{suffix}"
 
 
     cap_mono =  f"<{config_dict['CAP_FONT']}>{nfile_}</{config_dict['CAP_FONT']}>" if config_dict['CAP_FONT'] else nfile_
