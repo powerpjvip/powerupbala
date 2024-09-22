@@ -18,7 +18,7 @@ from bot.helper.ext_utils.bot_utils import cmd_exec, sync_to_async, get_readable
 from bot.helper.nordbotz_utils.metadata import ARCH_EXT, get_mime_type, edit_metadata
 from bot.helper.ext_utils.telegraph_helper import telegraph
 
-count = 0
+count = 2000
 
 
 async def is_multi_streams(path):
@@ -277,7 +277,7 @@ async def format_filename(file_, user_id, dirpath=None, isMirror=False):
         nfile_ = prefix.replace('\s', ' ') + file_
         prefix = re_sub(r'<.*?>', '', prefix).replace('\s', ' ')
         if not file_.startswith(prefix):
-            file_ = f"{str(count).zfill(4)}.{prefix}{file_}"
+            file_ = f"{str(count).zfill(3)}.{prefix}{file_}"
 
     if suffix and not isMirror:
         suffix = suffix.replace('\s', ' ')
@@ -286,7 +286,7 @@ async def format_filename(file_, user_id, dirpath=None, isMirror=False):
         _extIn = 1 + len(fileDict[-1])
         _extOutName = '.'.join(
             fileDict[:-1]).replace('.', ' ').replace('-', ' ')
-        _newExtFileName = f"{str(count).zfill(4)}.{_extOutName}{suffix}.{fileDict[-1]}"
+        _newExtFileName = f"{str(count).zfill(3)}.{_extOutName}{suffix}.{fileDict[-1]}"
         if len(_extOutName) > (64 - (sufLen + _extIn)):
             _newExtFileName = (
                 _extOutName[: 64 - (sufLen + _extIn)]
@@ -295,7 +295,7 @@ async def format_filename(file_, user_id, dirpath=None, isMirror=False):
         file_ = _newExtFileName
     elif suffix:
         suffix = suffix.replace('\s', ' ')
-        file_ = f"{ospath.splitext(file_)[0]}{suffix}{ospath.splitext(file_)[1]}" if '.' in file_ else f"{str(count).zfill(4)}.{file_}{suffix}"
+        file_ = f"{ospath.splitext(file_)[0]}{suffix}{ospath.splitext(file_)[1]}" if '.' in file_ else f"{str(count).zfill(3)}.{file_}{suffix}"
 
 
     cap_mono =  f"<{config_dict['CAP_FONT']}>{nfile_}</{config_dict['CAP_FONT']}>" if config_dict['CAP_FONT'] else nfile_
@@ -312,7 +312,7 @@ async def format_filename(file_, user_id, dirpath=None, isMirror=False):
         cap_mono = slit[0].format(
             filename = nfile_,
             size = get_readable_file_size(await aiopath.getsize(up_path)),
-            count = str(count).zfill(4),
+            count = str(count).zfill(3),
             duration = get_readable_time(dur),
             quality = qual,
             languages = lang,
