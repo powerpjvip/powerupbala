@@ -528,27 +528,46 @@ class MirrorLeechListener:
                 else:
                     msg += BotTheme('RCPATH', RCpath=rclonePath)
                 if rclonePath and (RCLONE_SERVE_URL := config_dict['RCLONE_SERVE_URL']):
-                    remote, path = rclonePath.split(':', 1)
-                    url_path = rutils.quote(f'{path}')
-                    share_url = f'{RCLONE_SERVE_URL}/{remote}/{url_path}'
-                    if mime_type == "Folder":
-                        share_url += '/'
-                    buttons.ubutton(BotTheme('RCLONE_LINK'), share_url)
+                    INDEX_URL = self.index_link if self.drive_id else config_dict['INDEX_URL']
+                    if INDEX_URL:
+                        remote, path = rclonePath.split(':', 2)
+                        url_path = rutils.quote(f'{path}')
+                        share_url = f'{INDEX_URL}/{url_path}'
+                        share_urls = f'{INDEX_URL}/{url_path}?a=view'
+                        share_url += ''
+                        share_urls += ''
+                        if mime_type == "Folder":
+                            share_url += '/'
+                            share_urls = f'{INDEX_URL}/{url_path}?a=view'
+                            buttons.ubutton(BotTheme('INDEX_LINK_D'), share_url)                                                   
+                            buttons.ubutton(BotTheme('VIEW_LINK'), share_urls)   
+                        else:
+                            buttons.ubutton(BotTheme('INDEX_LINK_D'), share_url)
+                            buttons.ubutton(BotTheme('VIEW_LINK'), share_urls)
+
+  
                 elif not rclonePath and not is_DDL:
                     INDEX_URL = self.index_link if self.drive_id else config_dict['INDEX_URL']
                     if INDEX_URL:
                         url_path = rutils.quote(f'{name}')
                         share_url = f'{INDEX_URL}/{url_path}'
+                        share_urls = f'{INDEX_URL}/{url_path}?a=view'
+                        share_url += ''
+                        share_urls += ''                     
                         if mime_type == "Folder":
                             share_url += '/'
-                            buttons.ubutton(BotTheme('INDEX_LINK_F'), share_url)
+                            share_urls = f'{INDEX_URL}/{url_path}?a=view'
+                            buttons.ubutton(BotTheme('INDEX_LINK_D'), share_url)                                                   
+                            buttons.ubutton(BotTheme('VIEW_LINK'), share_urls)   
                         else:
                             buttons.ubutton(BotTheme('INDEX_LINK_D'), share_url)
-                            if mime_type.startswith(('image', 'video', 'audio')):
-                                share_urls = f'{INDEX_URL}/{url_path}?a=view'
-                                buttons.ubutton(BotTheme('VIEW_LINK'), share_urls)
+                            buttons.ubutton(BotTheme('VIEW_LINK'), share_urls)
+
+                buttons = extra_btns(buttons)
+                button = buttons.build_menu(2)
             else:
                 msg += BotTheme('RCPATH', RCpath=rclonePath)
+                button = None
             msg += BotTheme('M_CC', Tag=self.tag)
 
             message = msg
