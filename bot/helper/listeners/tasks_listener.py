@@ -563,7 +563,7 @@ class MirrorLeechListener:
                             buttons.ubutton(BotTheme('INDEX_LINK_D'), share_url)
                             buttons.ubutton(BotTheme('VIEW_LINK'), share_urls)
 
-                buttons = extra_btns(buttons)
+                #buttons = extra_btns(buttons)
                 #button = buttons.build_menu(2)
             else:
                 msg += BotTheme('RCPATH', RCpath=rclonePath)
