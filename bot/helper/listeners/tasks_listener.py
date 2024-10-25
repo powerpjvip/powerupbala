@@ -552,10 +552,10 @@ class MirrorLeechListener:
                         url_path = rutils.quote(f'{name}')
                         share_url = f'{INDEX_URL}/{url_path}'
                         share_urls = f'{INDEX_URL}/{url_path}?a=view'
-                        share_url += '/'
+                        share_url += ''
                         share_urls += ''                     
                         if mime_type == "Folder":
-                            share_url += ''
+                            share_url += '/'
                             share_urls = f'{INDEX_URL}/{url_path}?a=view'
                             buttons.ubutton(BotTheme('INDEX_LINK_D'), share_url)                                                   
                             buttons.ubutton(BotTheme('VIEW_LINK'), share_urls)   
