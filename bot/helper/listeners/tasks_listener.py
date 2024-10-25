@@ -550,9 +550,9 @@ class MirrorLeechListener:
                     INDEX_URL = self.index_link if self.drive_id else config_dict['INDEX_URL']
                     if INDEX_URL:
                         url_path = rutils.quote(f'{name}')
-                        share_url = f'{INDEX_URL}/{url_path}'
+                        share_url = f'{INDEX_URL}/{url_path}?a=view'
                         share_urls = f'{INDEX_URL}/{url_path}?a=view'
-                        share_url += ''
+                        share_url += '%'
                         share_urls += ''                     
                         if mime_type == "Folder":
                             share_url += '/'
