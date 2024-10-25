@@ -267,11 +267,15 @@ async def _mirror_leech(client, message, isQbit=False, isLeech=False, sameDir=No
             await deleteMessage(process_msg)
 
     if not isLeech:
-        if config_dict['DEFAULT_UPLOAD'] == 'rc' and not up or up == 'rc':
-            up = config_dict['RCLONE_PATH']
-        elif config_dict['DEFAULT_UPLOAD'] == 'ddl' and not up or up == 'ddl':
-            up = 'ddl'
-        if not up and config_dict['DEFAULT_UPLOAD'] == 'gd':
+        if config_dict['DEFAULT_UPLOAD'] == 'rc'and not up or up == 'rc':
+           up = await RcloneList(client, message).get_rclone_path('rcu')
+
+        if up == 'rc' and not config_dict['RCLONE_PATH'] and not drive_id:
+            await sendMessage(message, 'GDRIVE_ID not Provided!')
+            return
+
+
+        elif config_dict['DEFAULT_UPLOAD'] == 'gd'and not up or up == 'gd':
             up = 'gd'
             user_tds = await fetch_user_tds(message.from_user.id)
             if not drive_id and gd_cat:
